@@ -35,7 +35,7 @@ This tutorial outlines the prerequisites and installation of the open-source hel
 
 </p>
 <p>
-Enable Internet Information Services, check the CGI box ,and install PHP Manager
+
 
 ![image](https://github.com/user-attachments/assets/a56d9601-e2cc-4eb0-bcf9-8e554cd65a4a)
 </p>
