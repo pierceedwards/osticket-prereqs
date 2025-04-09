@@ -1,66 +1,77 @@
 <p align="center">
-<img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
+  <img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
 </p>
 
-<h1>osTicket - Prerequisites and Installation</h1>
-This tutorial outlines the prerequisites and installation of the open-source help desk ticketing system osTicket.<br />
+<h1 align="center">osTicket - Prerequisites and Installation Guide</h1>
 
-
-
-
-<h2>Environments and Technologies Used</h2>
-
-- Microsoft Azure (Virtual Machines/Computer)
-- Remote Desktop
-- Internet Information Services (IIS)
-
-<h2>Operating Systems Used </h2>
-
-- Windows 10</b> (21H2)
-
-<h2>List of Prerequisites</h2>
-
-- Enable IIS in windows with CGI
-- Install PHP Manager for IIS and Rewrite Module
-- Install VC_redist.x86.exe and MySQL 5.5.62
-- Launch Configuration Wizard and setup username and password
-- Install HeidiSQL and create an new database called "osTicket"
-
-<h2>Installation Steps</h2>
-
-<p>
-
-  ![image](https://github.com/user-attachments/assets/649a59ef-925b-407f-bd55-78a983cf8005)
-![image](https://github.com/user-attachments/assets/aa78c39b-e552-4f17-8957-dbfb0afb7ed5)
-
-</p>
-<p>
-
-
-![image](https://github.com/user-attachments/assets/a56d9601-e2cc-4eb0-bcf9-8e554cd65a4a)
+<p align="center">
+  A step-by-step guide for installing and configuring <strong>osTicket</strong>, an open-source support ticket system, on a Windows environment using Microsoft Azure and IIS.
 </p>
 
- ![image](https://github.com/user-attachments/assets/f8f682b8-cd92-4591-8092-c860d8746111)
- 
-Install VC_redist.x86.exe and MySQL 5.5.62 and launch the Configuration Wizard to setup a username and password
-<br />
+---
 
-<p>
-   
+## 🧰 Environments and Technologies Used
 
-![image](https://github.com/user-attachments/assets/a3a944d0-72c0-44f2-a32f-b1d6ed45e031)
+- **Microsoft Azure** – Virtual Machines for hosting the Windows OS  
+- **Remote Desktop Protocol (RDP)** – For accessing the virtual machine  
+- **Internet Information Services (IIS)** – To serve the osTicket web application  
 
+## 💻 Operating System
 
-<p>
-  
-</p>
-<br />
-Once installed create a database called "osTicket" (essentially we are doing the backend work to make the system function) once done we enter that information into our osticket installer and complete!
-<p>
+- **Windows 10 Pro** (Version 21H2)
 
-  ![image](https://github.com/user-attachments/assets/a40df611-29ab-4ae8-819e-8737c52d0d12)
-</p>
-<p>
+---
 
-</p>
-<br />
+## ✅ Prerequisites
+
+Ensure the following components are installed and configured before proceeding with the installation:
+
+1. **Enable IIS and CGI**
+   - Go to: `Control Panel > Programs > Turn Windows features on or off`
+   - Enable:
+     - Internet Information Services (IIS)
+     - Web Management Tools
+     - World Wide Web Services > Application Development Features > CGI
+
+2. **Install PHP Manager for IIS**  
+   - 🔗 [PHP Manager Download](https://www.iis.net/downloads/community/2018/05/php-manager-for-iis-10)
+
+3. **Install URL Rewrite Module**  
+   - 🔗 [Rewrite Module Download](https://www.iis.net/downloads/microsoft/url-rewrite)
+
+4. **Install Required Packages**
+   - **VC_redist.x86.exe** – 🔗 [Download](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)
+   - **MySQL Server 5.5.62** – Download and install (remember your root password)
+
+5. **Install HeidiSQL**
+   - 🔗 [HeidiSQL Download](https://www.heidisql.com/)
+   - Create a new database called `osTicket`
+
+---
+
+## 🚀 Installation Steps
+
+### 1. Download osTicket
+
+- 🔗 [Download osTicket](https://osticket.com/download/)
+- Extract the files to:  
+  `C:\inetpub\wwwroot\osTicket`
+
+### 2. Configure IIS
+
+- Open **IIS Manager**
+- Add a new website:
+  - Site name: `osTicket`
+  - Physical path: `C:\inetpub\wwwroot\osTicket`
+  - Port: `80` (or any available port)
+- Configure PHP using PHP Manager
+- Set correct permissions:
+  - `ost-config.php` → Allow write for `IUSR` and `IIS_IUSRS`
+  - `include/` and `scp/` folders → Temporary write access
+
+### 3. Setup MySQL Database
+
+- Launch **HeidiSQL**
+- Create a new database:
+  ```sql
+  CREATE DATABASE osTicket;
