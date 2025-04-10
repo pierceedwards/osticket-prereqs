@@ -73,5 +73,4 @@ Ensure the following components are installed and configured before proceeding w
 
 - Launch **HeidiSQL**
 - Create a new database:
-  ```sql
   
